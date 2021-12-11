@@ -1,12 +1,11 @@
 import { useSelector, useDispatch } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
+import Goods from './components/Goods';
 
-
-function App(props) {
+function App() {
   return (
     <>
-
+      <Goods />
     </>
   );
 }
