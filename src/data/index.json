@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "title": "apple",
+    "cost": 8,
+    "image": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.55max.com%2Fproducts%2Fred-apple-art-print&psig=AOvVaw2bw0Hx-Z-n7O-M7-Ra4xUG&ust=1639293413499000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCPjQj_-Z2_QCFQAAAAAdAAAAABAD"
+  },
+  {
+    "id": 2,
+    "title": "lemon",
+    "cost": 25,
+    "image": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pinterest.com%2Fpin%2F13581236365715568%2F&psig=AOvVaw20BWqaMfziVPycAQhxmKwm&ust=1639293453313000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCNijqJSa2_QCFQAAAAAdAAAAABAP"
+  }
+]
