@@ -9,7 +9,6 @@ function Goods() {
         <div>
             {goods.map(({ title, image, cost, id }) => <GoodsList key={id} id={id} title={title} img={image} cost={cost} />)}
             <div>
-                CARD :
             </div>
         </div>
     )
