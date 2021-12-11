@@ -1,27 +1,32 @@
-import { findByRole } from '@testing-library/react'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { bindActionCreators } from 'redux'
+
 
 export default function Card() {
-    const { card: { value: card } } = useSelector(({ card }) => ({ card }))
-    const { goods: { goods } } = useSelector(({ goods }) => ({ goods }))
+    const { card: { values: card } } = useSelector(({ card }) => ({ card }))
 
-    const goodsObj = goods.reduce((acc, item) => {
-        acc[item['id']] = item
-        return acc
-    }, {})
+    const cartObj = { ...card }
+    delete cartObj["count"];
 
-    let total = 0;
 
-    Object.keys(card).map(item => total += goodsObj[item]['cost'] * card[item])
+
+
+    Object.values(cartObj).map(({ title, cost, counter }) => <li>
+        title : {title}
+    </li>)
+
+
+
 
     return (
         <div>
             <ul>
-                {Object.keys(card).map(item => <li key={goodsObj[item]['id']}>{goodsObj[item]['title']}-{card[item]} : price {goodsObj[item]['cost'] * card[item]}</li>)}
+                {Object.values(cartObj).map(({ title, cost, counter, id }) => <li key={id}>
+                    title : {title}
+                    price : {cost * counter}
+                    amount : {counter}
+                </li>)}
             </ul>
-            total price : {total}
         </div>
     )
 }

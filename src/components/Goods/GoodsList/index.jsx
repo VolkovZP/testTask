@@ -12,11 +12,13 @@ function GoodsList({ img, title, cost, id }) {
     const { addToCard } = bindActionCreators(cardCreaters, dispatch)
 
 
+
     const clickHandler = (e) => {
         e.preventDefault();
         let t = e.target
         if (!t.classList.contains('add-to-card')) return true;
-        addToCard(t.getAttribute('data-key'))
+        let s = t.getAttribute('data-key')
+        addToCard({ s, title, cost, id, })
 
     }
 
