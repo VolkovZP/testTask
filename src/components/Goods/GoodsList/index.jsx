@@ -6,6 +6,8 @@ import * as cardCreaters from '../../../actions/cardCreaters'
 function GoodsList({ img, title, cost, id }) {
     const { card: { value } } = useSelector(({ card }) => ({ card }))
 
+
+
     const dispatch = useDispatch();
     const { addToCard } = bindActionCreators(cardCreaters, dispatch)
 

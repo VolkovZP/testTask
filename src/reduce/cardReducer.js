@@ -11,8 +11,11 @@ function cardReducer(state = initialState, action) {
     switch (action.type) {
         case ACTIONS_TYPES.ADD_TO_CARD: {
             const id = action.payload;
-            if (state.value[id] === undefined) state.value[id] = 0
-            state.value[id]++
+            if (state.value[id] === undefined) {
+                state.value[id] = 1
+            } else {
+                state.value[id]++
+            }
             return { ...state }
         }
         default: {
@@ -22,4 +25,3 @@ function cardReducer(state = initialState, action) {
 }
 
 export default cardReducer;
-// return { ...state.value, v: 2 }

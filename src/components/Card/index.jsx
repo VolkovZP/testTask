@@ -1,3 +1,4 @@
+import { findByRole } from '@testing-library/react'
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { bindActionCreators } from 'redux'
@@ -11,13 +12,16 @@ export default function Card() {
         return acc
     }, {})
 
+    let total = 0;
+
+    Object.keys(card).map(item => total += goodsObj[item]['cost'] * card[item])
 
     return (
         <div>
             <ul>
-                {Object.keys(card).map(item => <li key={goodsObj[item]['id']}>{goodsObj[item]['title']}-{card[item]}</li>)}
-                <div>Price : </div>
+                {Object.keys(card).map(item => <li key={goodsObj[item]['id']}>{goodsObj[item]['title']}-{card[item]} : price {goodsObj[item]['cost'] * card[item]}</li>)}
             </ul>
+            total price : {total}
         </div>
     )
 }
