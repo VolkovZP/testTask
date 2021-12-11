@@ -9,11 +9,9 @@ export default function Card() {
     delete cartObj["count"];
 
 
+    let total = 0
 
-
-    Object.values(cartObj).map(({ title, cost, counter }) => <li>
-        title : {title}
-    </li>)
+    Object.values(cartObj).map(({ title, cost, counter }) => total += (cost * counter))
 
 
 
@@ -27,6 +25,7 @@ export default function Card() {
                     amount : {counter}
                 </li>)}
             </ul>
+            total : {total}
         </div>
     )
 }
