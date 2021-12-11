@@ -1,3 +1,5 @@
 export const ACTIONS_TYPES = {
     SHOW_GOODS: "SHOW_GOODS",
+    SHOW_CARD: "SHOW_CARD",
+    ADD_TO_CARD: "ADD_TO_CARD",
 }
