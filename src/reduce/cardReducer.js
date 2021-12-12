@@ -2,9 +2,7 @@ import { ACTIONS_TYPES } from "../actions/actionTypes";
 
 
 const initialState = {
-    values: {
-        // count: {}
-    },
+    values: {},
 }
 
 let count = {};
@@ -29,6 +27,16 @@ function cardReducer(state = initialState, action) {
         case ACTIONS_TYPES.REMOVE_FROM_CART: {
             const { id } = action
             delete state.values[id]
+            return { ...state }
+        }
+        case ACTIONS_TYPES.DECREMENT_FROM_AMOUNT: {
+            const { values } = state
+            const { id } = action
+            if (values[id]["counter"] <= 1) {
+                delete values[id]
+                return { ...state }
+            }
+            values[id]["counter"]--
             return { ...state }
         }
         default: {

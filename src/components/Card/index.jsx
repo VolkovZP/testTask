@@ -7,7 +7,7 @@ import * as cardCreaters from '../../actions/cardCreaters'
 export default function Card() {
     const { card: { values: card } } = useSelector(({ card }) => ({ card }))
     const dispatch = useDispatch();
-    const { removeToCart } = bindActionCreators(cardCreaters, dispatch)
+    const { removeToCart, decrementFromCart } = bindActionCreators(cardCreaters, dispatch)
 
     let total = 0;
 
@@ -25,6 +25,7 @@ export default function Card() {
                     price : {toCurrency(cost * counter)}
                     amount : {counter}
                     <button onClick={() => removeToCart(id)}>x</button>
+                    <button onClick={() => decrementFromCart(id)}>-1</button>
                 </li>)}
             </ul>
             total: {toCurrency(total)}

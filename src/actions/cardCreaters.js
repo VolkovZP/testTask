@@ -10,3 +10,8 @@ export const removeToCart = (id) => ({
     type: ACTIONS_TYPES.REMOVE_FROM_CART,
     id
 })
+
+export const decrementFromCart = (id) => ({
+    type: ACTIONS_TYPES.DECREMENT_FROM_AMOUNT,
+    id
+})
