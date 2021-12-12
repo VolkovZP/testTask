@@ -1,17 +1,18 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-
+import { toCurrency } from '../../func'
+import { bindActionCreators } from 'redux'
+import * as cardCreaters from '../../actions/cardCreaters'
 
 export default function Card() {
     const { card: { values: card } } = useSelector(({ card }) => ({ card }))
+    const dispatch = useDispatch();
+    const { removeToCart } = bindActionCreators(cardCreaters, dispatch)
 
-    const cartObj = { ...card }
-    delete cartObj["count"];
+    let total = 0;
 
 
-    let total = 0
-
-    Object.values(cartObj).map(({ title, cost, counter }) => total += (cost * counter))
+    Object.values(card).map(({ cost, counter }) => total += (cost * counter))
 
 
 
@@ -19,13 +20,14 @@ export default function Card() {
     return (
         <div>
             <ul>
-                {Object.values(cartObj).map(({ title, cost, counter, id }) => <li key={id}>
+                {Object.values(card).map(({ title, cost, counter, id }) => <li key={id}>
                     title : {title}
-                    price : {cost * counter}
+                    price : {toCurrency(cost * counter)}
                     amount : {counter}
+                    <button onClick={() => removeToCart(id)}>x</button>
                 </li>)}
             </ul>
-            total : {total}
-        </div>
+            total: {toCurrency(total)}
+        </div >
     )
 }

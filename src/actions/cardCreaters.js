@@ -4,3 +4,9 @@ export const addToCard = (payload) => ({
     type: ACTIONS_TYPES.ADD_TO_CARD,
     payload
 })
+
+
+export const removeToCart = (id) => ({
+    type: ACTIONS_TYPES.REMOVE_FROM_CART,
+    id
+})

@@ -3,33 +3,32 @@ import { ACTIONS_TYPES } from "../actions/actionTypes";
 
 const initialState = {
     values: {
-        count: {}
+        // count: {}
     },
 }
 
-
+let count = {};
 
 function cardReducer(state = initialState, action) {
     switch (action.type) {
         case ACTIONS_TYPES.ADD_TO_CARD: {
-            const id = action.payload.id;
+            const { id } = action.payload;
             if (!state.values[id]) {
-                state.values[action.payload.id] = {
-                    id: action.payload.id,
-                    title: action.payload.title,
-                    cost: action.payload.cost,
-                    counter: state.values.count[id] = 1,
-
-
+                state.values[id] = {
+                    ...action.payload,
+                    counter: count[id] = 1
                 }
             } else {
-                state.values[action.payload.id] = {
-                    id: action.payload.id,
-                    title: action.payload.title,
-                    cost: action.payload.cost,
-                    counter: state.values.count[id] += 1,
+                state.values[id] = {
+                    ...action.payload,
+                    counter: count[id] += 1
                 }
             }
+            return { ...state }
+        }
+        case ACTIONS_TYPES.REMOVE_FROM_CART: {
+            const { id } = action
+            delete state.values[id]
             return { ...state }
         }
         default: {

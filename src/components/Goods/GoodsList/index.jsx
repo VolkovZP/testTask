@@ -2,6 +2,8 @@ import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as cardCreaters from '../../../actions/cardCreaters'
+import { toCurrency } from '../../../func'
+
 
 function GoodsList({ img, title, cost, id }) {
     const { card: { value } } = useSelector(({ card }) => ({ card }))
@@ -15,18 +17,17 @@ function GoodsList({ img, title, cost, id }) {
 
     const clickHandler = (e) => {
         e.preventDefault();
-        let t = e.target
-        if (!t.classList.contains('add-to-card')) return true;
-        let s = t.getAttribute('data-key')
-        addToCard({ s, title, cost, id, })
-
+        if (e.target.classList.contains('add-to-card')) {
+            addToCard({ title, cost, id, })
+        }
+        return
     }
 
     return (
         <div onClick={clickHandler}>
             <img src={img} alt={title} />
             <p>{title}</p>
-            <p>{cost}</p>
+            <p>{toCurrency(cost)}</p>
             <button data-key={id} className='add-to-card'>add to card</button>
         </div>
     )
