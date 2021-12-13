@@ -1,15 +1,15 @@
 import { ACTIONS_TYPES } from "../actions/actionTypes";
-
+const count = {};
 
 const initialState = {
     values: {},
 }
 
-let count = {};
+
 function cardReducer(state = initialState, action) {
     switch (action.type) {
         case ACTIONS_TYPES.ADD_TO_CARD: {
-            const { id, cost, discount } = action.payload;
+            const { id } = action.payload;
             if (!state.values[id]) {
                 state.values[id] = {
                     ...action.payload,

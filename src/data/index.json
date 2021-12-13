@@ -1,21 +1,22 @@
 [
   {
     "id": 1,
-    "title": "apple",
-    "cost": 8,
-    "image": "https://image.shutterstock.com/image-vector/pixel-apple-icon-vector-element-260nw-1758974606.jpg"
+    "title": "Банан",
+    "cost": 10,
+    "image": "https://i.pinimg.com/originals/90/6c/ec/906cec1416bcda5505fde34bc96660db.jpg"
   },
   {
     "id": 2,
-    "title": "banan",
+    "title": "Яблоко",
     "cost": 8,
-    "image": "https://image.shutterstock.com/image-vector/banana-pixel-art-8-bit-260nw-1018025569.jpg"
+    "image": "https://pics.botanichka.ru/wp-content/uploads/2020/09/5-sekretov-dlitelnogo-hraneniya-yablok-01.jpg"
   },
   {
     "id": 3,
     "discount": 25,
-    "title": "tomato",
+    "discontForEveryKg": 3,
+    "title": "Папайя",
     "cost": 10,
-    "image": "https://image.shutterstock.com/image-vector/pixel-tomato-vector-illustration-art-260nw-1983124724.jpg"
+    "image": "https://vegan.rocks/blog/health-benefits-of-papaya/feature_hu6888502c85fcfed3962bf691efee9f5c_543256_1600x1200_fill_q75_box_smart1.jpg"
   }
 ]

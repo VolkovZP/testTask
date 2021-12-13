@@ -1,16 +1,18 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import GoodsList from './GoodsList'
+import style from './Goods.module.sass'
 
 function Goods() {
     const { goods: { goods } } = useSelector(({ goods }) => ({ goods }))
-    const style = { display: "flex" }
+
+
     return (
-        <div style={style}>
-            {goods.map(({ title, image, cost, id, discount }) => <GoodsList key={id} id={id} title={title} img={image} cost={cost} discount={discount} />)}
+        <section className={style.container}>
+            {goods.map(({ title, image, cost, id, discount, discontForEveryKg }) => <GoodsList key={id} id={id} title={title} img={image} cost={cost} discount={discount} discontForEveryKg={discontForEveryKg} />)}
             <div>
             </div>
-        </div>
+        </section>
     )
 }
 

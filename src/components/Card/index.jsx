@@ -1,25 +1,29 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { toCurrency } from '../../func'
 import { bindActionCreators } from 'redux'
 import * as cardCreaters from '../../actions/cardCreaters'
+import style from './Card.module.sass';
+
 
 export default function Card() {
+
     const { card: { values: card } } = useSelector(({ card }) => ({ card }))
+    console.log(card)
     const dispatch = useDispatch();
     const { removeToCart, decrementFromCart } = bindActionCreators(cardCreaters, dispatch)
 
     let totalPrice = 0;
-    console.log(card)
 
 
 
-    function priceWithDiscount(counter, cost, discount) {
+
+    function priceWithDiscount(counter, cost, discount, discontForEveryKg) {
         let oddCounter = 0
         let result = 0
         if (discount) {
             for (let i = 1; i <= counter; i++) {
-                if (i % 3 === 0) {
+                if (i % discontForEveryKg === 0) {
                     oddCounter++
                     result = discount * oddCounter
                 } else {
@@ -33,13 +37,12 @@ export default function Card() {
         return result
     }
 
-
     return (
-        <div>
+        <div className={style.qwe}>
             <ul>
-                {Object.values(card).map(({ title, cost, counter, id, discount }) => <li key={id}>
+                {Object.values(card).map(({ title, cost, counter, id, discount, discontForEveryKg }) => <li key={id}>
                     title : {title}
-                    price : {toCurrency(priceWithDiscount(counter, cost, discount))}
+                    price : {toCurrency(priceWithDiscount(counter, cost, discount, discontForEveryKg))}
                     amount : {counter}
                     <button onClick={() => removeToCart(id)}>x</button>
                     <button onClick={() => decrementFromCart(id)}>-1</button>
