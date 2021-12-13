@@ -1,21 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { toCurrency } from '../../func'
 import { bindActionCreators } from 'redux'
 import * as cardCreaters from '../../actions/cardCreaters'
 import style from './Card.module.sass';
-
-
 export default function Card() {
 
     const { card: { values: card } } = useSelector(({ card }) => ({ card }))
-    console.log(card)
+
     const dispatch = useDispatch();
     const { removeToCart, decrementFromCart } = bindActionCreators(cardCreaters, dispatch)
-
     let totalPrice = 0;
-
-
 
 
     function priceWithDiscount(counter, cost, discount, discontForEveryKg) {
@@ -38,7 +33,7 @@ export default function Card() {
     }
 
     return (
-        <div className={style.qwe}>
+        <div>
             <ul>
                 {Object.values(card).map(({ title, cost, counter, id, discount, discontForEveryKg }) => <li key={id}>
                     title : {title}
@@ -46,11 +41,11 @@ export default function Card() {
                     amount : {counter}
                     <button onClick={() => removeToCart(id)}>x</button>
                     <button onClick={() => decrementFromCart(id)}>-1</button>
-
                 </li>)}
             </ul>
             total: {toCurrency(totalPrice)}
         </div >
+
     )
 }
 

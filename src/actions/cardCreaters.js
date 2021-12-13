@@ -15,3 +15,5 @@ export const decrementFromCart = (id) => ({
     type: ACTIONS_TYPES.DECREMENT_FROM_AMOUNT,
     id
 })
+
+

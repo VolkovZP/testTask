@@ -1,9 +1,12 @@
-import React, { useEffect, useState } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import React from 'react'
+import { useSelector } from 'react-redux'
 import GoodsList from './GoodsList'
+
 import style from './Goods.module.sass'
 
 function Goods() {
+
+
     const { goods: { goods } } = useSelector(({ goods }) => ({ goods }))
 
 
