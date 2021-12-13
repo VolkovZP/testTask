@@ -13,7 +13,8 @@ function cardReducer(state = initialState, action) {
             if (!state.values[id]) {
                 state.values[id] = {
                     ...action.payload,
-                    counter: count[id] = 1
+                    counter: count[id] = 1,
+                    boo: true
                 }
             } else {
                 state.values[id] = {
@@ -26,7 +27,7 @@ function cardReducer(state = initialState, action) {
         case ACTIONS_TYPES.REMOVE_FROM_CART: {
             const { id } = action
             delete state.values[id]
-            return { ...state }
+            return { ...state, boo: false }
         }
         case ACTIONS_TYPES.DECREMENT_FROM_AMOUNT: {
             const { values } = state

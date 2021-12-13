@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { toCurrency } from '../../func'
 import { bindActionCreators } from 'redux'
@@ -7,7 +7,6 @@ import style from './Card.module.sass';
 export default function Card() {
 
     const { card: { values: card } } = useSelector(({ card }) => ({ card }))
-
     const dispatch = useDispatch();
     const { removeToCart, decrementFromCart } = bindActionCreators(cardCreaters, dispatch)
     let totalPrice = 0;
@@ -16,6 +15,7 @@ export default function Card() {
     function priceWithDiscount(counter, cost, discount, discontForEveryKg) {
         let oddCounter = 0
         let result = 0
+
         if (discount) {
             for (let i = 1; i <= counter; i++) {
                 if (i % discontForEveryKg === 0) {
@@ -28,10 +28,8 @@ export default function Card() {
         } else {
             result += counter * cost
         }
-        totalPrice += result
         return result
     }
-
     return (
         <div>
             <ul>
