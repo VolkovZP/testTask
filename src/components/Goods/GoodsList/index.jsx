@@ -5,7 +5,7 @@ import * as cardCreaters from '../../../actions/cardCreaters'
 import { toCurrency } from '../../../func'
 
 
-function GoodsList({ img, title, cost, id }) {
+function GoodsList({ img, title, cost, id, discount }) {
     const { card: { value } } = useSelector(({ card }) => ({ card }))
 
 
@@ -18,7 +18,7 @@ function GoodsList({ img, title, cost, id }) {
     const clickHandler = (e) => {
         e.preventDefault();
         if (e.target.classList.contains('add-to-card')) {
-            addToCard({ title, cost, id, })
+            addToCard({ title, cost, id, discount })
         }
         return
     }

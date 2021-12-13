@@ -6,11 +6,10 @@ const initialState = {
 }
 
 let count = {};
-
 function cardReducer(state = initialState, action) {
     switch (action.type) {
         case ACTIONS_TYPES.ADD_TO_CARD: {
-            const { id } = action.payload;
+            const { id, cost, discount } = action.payload;
             if (!state.values[id]) {
                 state.values[id] = {
                     ...action.payload,

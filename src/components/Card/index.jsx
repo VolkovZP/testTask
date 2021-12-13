@@ -9,26 +9,46 @@ export default function Card() {
     const dispatch = useDispatch();
     const { removeToCart, decrementFromCart } = bindActionCreators(cardCreaters, dispatch)
 
-    let total = 0;
+    let totalPrice = 0;
+    console.log(card)
 
 
-    Object.values(card).map(({ cost, counter }) => total += (cost * counter))
 
-
+    function priceWithDiscount(counter, cost, discount) {
+        let oddCounter = 0
+        let result = 0
+        if (discount) {
+            for (let i = 1; i <= counter; i++) {
+                if (i % 3 === 0) {
+                    oddCounter++
+                    result = discount * oddCounter
+                } else {
+                    result += cost
+                }
+            }
+        } else {
+            result += counter * cost
+        }
+        totalPrice += result
+        return result
+    }
 
 
     return (
         <div>
             <ul>
-                {Object.values(card).map(({ title, cost, counter, id }) => <li key={id}>
+                {Object.values(card).map(({ title, cost, counter, id, discount }) => <li key={id}>
                     title : {title}
-                    price : {toCurrency(cost * counter)}
+                    price : {toCurrency(priceWithDiscount(counter, cost, discount))}
                     amount : {counter}
                     <button onClick={() => removeToCart(id)}>x</button>
                     <button onClick={() => decrementFromCart(id)}>-1</button>
+
                 </li>)}
             </ul>
-            total: {toCurrency(total)}
+            total: {toCurrency(totalPrice)}
         </div >
     )
 }
+
+

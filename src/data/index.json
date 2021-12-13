@@ -13,6 +13,7 @@
   },
   {
     "id": 3,
+    "discount": 25,
     "title": "tomato",
     "cost": 10,
     "image": "https://image.shutterstock.com/image-vector/pixel-tomato-vector-illustration-art-260nw-1983124724.jpg"
