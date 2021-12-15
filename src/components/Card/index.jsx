@@ -28,6 +28,7 @@ export default function Card() {
         } else {
             result += counter * cost
         }
+        totalPrice += result
         return result
     }
     return (
@@ -37,8 +38,9 @@ export default function Card() {
                     title : {title}
                     price : {toCurrency(priceWithDiscount(counter, cost, discount, discontForEveryKg))}
                     amount : {counter}
+                    {/* <button onClick={() => decrementFromCart(id)}>-1</button> */}
+                    <input type="number" min={1} defaultValue={counter} onChange={({ target: { value } }) => console.log(value)} />
                     <button onClick={() => removeToCart(id)}>x</button>
-                    <button onClick={() => decrementFromCart(id)}>-1</button>
                 </li>)}
             </ul>
             total: {toCurrency(totalPrice)}

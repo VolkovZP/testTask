@@ -4,7 +4,8 @@ import { bindActionCreators } from 'redux'
 import * as cardCreaters from '../../../actions/cardCreaters'
 import { toCurrency } from '../../../func'
 import style from './GoodsList.module.sass'
-
+import { Card, Button } from 'react-bootstrap'
+import cx from 'classnames'
 
 function GoodsList({ img, title, cost, id, discount, discontForEveryKg }) {
 
@@ -13,22 +14,28 @@ function GoodsList({ img, title, cost, id, discount, discontForEveryKg }) {
 
     const { addToCard } = bindActionCreators(cardCreaters, dispatch)
 
-    const clickHandler = (e) => {
-        e.preventDefault();
-        if (e.target.classList.contains('add-to-card')) {
-            addToCard({ title, cost, id, discount, discontForEveryKg })
-        }
-        return
+    const clickHandler = () => {
+        addToCard({ title, cost, id, discount, discontForEveryKg })
+
     }
+
+
     return (
-        <article onClick={clickHandler} className={style.wrapper}>
-            <div className={style.inWrapper}>
-                <img src={img} alt={title} className={style.image} />
-            </div>
-            <h1>{title}</h1>
-            <span>{toCurrency(cost)}</span>
-            {!card[id] ? <button data-key={id} className='add-to-card'>add to card</button> : <div>in Cart</div>}
-        </article>
+        <Card style={{ width: '18rem' }}>
+            <Card.Img variant="top" src={img} className={style.image} />
+            <Card.Body className={style.cardBody}>
+                <Card.Title>{title}</Card.Title>
+                <Card.Text className={cx(style.normalPrice, {
+                    [style.dicountPrice]: !discount
+                })}>{toCurrency(cost)}</Card.Text>
+                {discount && <Card.Text>{`Акция : ${toCurrency(discount)}за каждые ${discontForEveryKg}кг`}</Card.Text>}
+                <div className={style.btnContainer}>
+                    {!card[id] ? <Button onClick={clickHandler} variant="primary">Заказать</Button> : <Button variant="primary" size="lg" disabled>
+                        Добавлен в корзину
+                    </Button>}
+                </div>
+            </Card.Body>
+        </Card >
     )
 }
 export default GoodsList;
