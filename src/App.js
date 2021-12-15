@@ -17,7 +17,6 @@ function App() {
         <Route path="/cart" element={<Card />} />
         <Route path="/*" element={<NotFound />} />
       </Routes>
-      {/* <Footer /> */}
     </Router>
   );
 }

@@ -10,34 +10,23 @@ function cardReducer(state = initialState, action) {
     switch (action.type) {
         case ACTIONS_TYPES.ADD_TO_CARD: {
             const { id } = action.payload;
-            // if (!state.values[id]) {
             state.values[id] = {
                 ...action.payload,
                 counter: count[id] = 1,
                 boo: true
             }
-            // } else {
-            //     state.values[id] = {
-            //         ...action.payload,
-            //         counter: ++count[id]
-            //     }
-            // }
+            return { ...state }
+        }
+        case ACTIONS_TYPES.INCREMENT: {
+            const { value, id } = action
+            state.values[id].counter = +value
+            if (value > 100) state.values[id].counter = 1
             return { ...state }
         }
         case ACTIONS_TYPES.REMOVE_FROM_CART: {
             const { id } = action
             delete state.values[id]
             return { ...state, boo: false }
-        }
-        case ACTIONS_TYPES.DECREMENT_FROM_AMOUNT: {
-            const { values } = state
-            const { id } = action
-            if (values[id]["counter"] <= 1) {
-                delete values[id]
-                return { ...state }
-            }
-            values[id]["counter"]--
-            return { ...state }
         }
         default: {
             return state;

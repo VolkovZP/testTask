@@ -8,7 +8,7 @@ export default function Card() {
 
     const { card: { values: card } } = useSelector(({ card }) => ({ card }))
     const dispatch = useDispatch();
-    const { removeToCart, decrementFromCart } = bindActionCreators(cardCreaters, dispatch)
+    const { removeToCart, increment } = bindActionCreators(cardCreaters, dispatch)
     let totalPrice = 0;
 
 
@@ -31,6 +31,7 @@ export default function Card() {
         totalPrice += result
         return result
     }
+
     return (
         <div>
             <ul>
@@ -38,8 +39,14 @@ export default function Card() {
                     title : {title}
                     price : {toCurrency(priceWithDiscount(counter, cost, discount, discontForEveryKg))}
                     amount : {counter}
-                    {/* <button onClick={() => decrementFromCart(id)}>-1</button> */}
-                    <input type="number" min={1} defaultValue={counter} onChange={({ target: { value } }) => console.log(value)} />
+                    <input type="number" min={1} max='100' defaultValue={counter} onChange={(e) => {
+                        let value = e.target.value
+                        if (value > 100) {
+                            value = 1;
+                            e.target.valueAsNumber = 1
+                        }
+                        increment({ value, id })
+                    }} />
                     <button onClick={() => removeToCart(id)}>x</button>
                 </li>)}
             </ul>
