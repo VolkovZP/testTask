@@ -15,7 +15,7 @@ function GoodsList({ img, title, cost, id, discount, discontForEveryKg }) {
     const { addToCard } = bindActionCreators(cardCreaters, dispatch)
 
     const clickHandler = () => {
-        addToCard({ title, cost, id, discount, discontForEveryKg })
+        addToCard({ title, cost, id, discount, discontForEveryKg, img })
 
     }
 
