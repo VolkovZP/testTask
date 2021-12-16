@@ -6,7 +6,8 @@ import * as cartCreaters from '../../actions/cartCreaters';
 import style from './Cart.module.sass';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
-export default function Cart () {
+
+export default function Cart() {
   let totalPrice = 0;
   const {
     cart: { values: cart },
@@ -16,7 +17,7 @@ export default function Cart () {
     cartCreaters,
     dispatch
   );
-  function priceWithDiscount (counter, cost, discount, discontForEveryKg) {
+  function priceWithDiscount(counter, cost, discount, discontForEveryKg) {
     let oddCounter = 0;
     let result = 0;
     if (discount) {
