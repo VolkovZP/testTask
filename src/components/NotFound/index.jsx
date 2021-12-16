@@ -1,4 +1,5 @@
 import React from 'react';
-export default function NotFound () {
-  return <div>Page not found...</div>;
+import style from './NotFound.module.sass'
+export default function NotFound() {
+  return <div className={style.container}></div>;
 }
